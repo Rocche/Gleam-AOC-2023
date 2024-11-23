@@ -9,7 +9,7 @@ fn not_empty(s: String) -> Bool {
   !string.is_empty(s)
 }
 
-fn get_first_and_last(l: List(Int)) -> List(Int) {
+pub fn get_first_and_last(l: List(Int)) -> List(Int) {
   [list.first(l), list.last(l)]
   |> result.values
 }
@@ -26,7 +26,7 @@ fn extract_number_from_line(line: String) -> Int {
   |> result.unwrap(0)
 }
 
-fn get_lines(filepath: String) -> List(String) {
+pub fn get_lines(filepath: String) -> List(String) {
   let assert Ok(content) = simplifile.read(from: filepath)
   content
   |> string.split("\n")
@@ -34,11 +34,11 @@ fn get_lines(filepath: String) -> List(String) {
   |> list.filter(not_empty)
 }
 
-pub fn main() {
+pub fn run() {
   let filepath = "real_input.txt"
   let sum =
     get_lines(filepath)
     |> list.map(extract_number_from_line)
     |> int.sum
-  io.debug(sum)
+  io.println("Part one result is: " <> int.to_string(sum))
 }
