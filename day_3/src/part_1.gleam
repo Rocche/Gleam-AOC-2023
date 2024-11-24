@@ -9,14 +9,14 @@ pub type EngineElement {
   EngineElement(element: String, row: Int, col: Int)
 }
 
-fn is_numeric(char: String) -> Bool {
+pub fn is_numeric(char: String) -> Bool {
   case char |> int.base_parse(10) {
     Error(Nil) -> False
     _ -> True
   }
 }
 
-fn is_number_adjacent_to_symbol(
+pub fn is_number_adjacent_to_symbol(
   num_row: Int,
   num_col1: Int,
   num_col2: Int,
@@ -114,7 +114,7 @@ fn parse_lines_loop(
   }
 }
 
-fn parse_lines(lines: List(String)) -> List(EngineElement) {
+pub fn parse_lines(lines: List(String)) -> List(EngineElement) {
   parse_lines_loop(lines, 0, [])
 }
 
